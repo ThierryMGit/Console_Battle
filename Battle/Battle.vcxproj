@@ -141,10 +141,14 @@
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Classes\Fighters\Fighter.cpp" />
+    <ClCompile Include="Classes\Fighters\Knight.cpp" />
+    <ClCompile Include="Classes\Fighters\Orc.cpp" />
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\Fighters\Fighter.h" />
+    <ClInclude Include="Classes\Fighters\Knight.h" />
+    <ClInclude Include="Classes\Fighters\Orc.h" />
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
