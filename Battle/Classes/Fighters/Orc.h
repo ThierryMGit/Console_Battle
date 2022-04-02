@@ -10,4 +10,8 @@ class Orc :
     public:
         Orc();
         ~Orc();
+
+    protected:
+        // Retourne le type du combattant en chaîne de caractères
+        virtual std::string getStringType() const override { return "Orc"; };
 };

@@ -1,28 +1,27 @@
 #pragma once
 
-// Permet de créer une arme avec plusieurs niveaux de liberté sur ses caractéristiques
+// Permet de créer une arme offensive
+
+#include <string>
 
 class FighterOffensiveWeapon
 {
 	public:
-		enum class Type {
-			SWORD,
-			AXE,
-			NONE
-		};
+		// Arme offensive avec dégâts de base
+		FighterOffensiveWeapon();
 
-		// Arme dont les caractéristiques sont définies par son type
-		FighterOffensiveWeapon(Type type);
+		// Arme offensive dont les dégâts sont définis librement
+		FighterOffensiveWeapon(int damage);
 
-		// Arme dont les caractéristiques sont définies librement
-		FighterOffensiveWeapon(Type type, int damage);
+		virtual ~FighterOffensiveWeapon();
 
-		// Accesseurs sur les variables de la classe
-		Type getType() { return _type; };
+		// Retourne le nom de l'arme en chaîne de caractères
+		virtual std::string getStringName() const { return "Poings"; };
+
+		// Accesseurs sur les dégâts
 		int getDamage() { return _damage; };
 
-	private:
-		Type _type;
-		int _damage;
+	protected:
+		int _damage;	
 };
 

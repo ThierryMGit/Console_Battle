@@ -1,27 +1,26 @@
 #pragma once
 
-// Permet de créer un combattant avec plusieurs niveaux de liberté sur ses caractéristiques
+// Permet de créer un combattant
 
 #include <memory> 
 #include <string>
 #include "../Weapons/OffensiveWeapons/FighterOffensiveWeapon.h"
+#include "../Weapons/DefensiveWeapons/FighterDefensiveWeapon.h"
 
 class Fighter
 {
 	public:
 		enum class Type {
 			KNIGHT,
-			ORC
+			ORC,
+			SOLDIER
 		};
 
-		// Combattant dont le type définit ses caractéristiques
-		Fighter(Type type);
+		// Combattant de base -> Soldat avec 10 points de vie combattant avec ses poings
+		Fighter();
 
-		// Combattant avec liberté de valeur sur ses caractéristiques et celles de son arme
-		Fighter(Type type, int life, int armor = 0, std::unique_ptr<FighterOffensiveWeapon> weapon = std::make_unique<FighterOffensiveWeapon>(FighterOffensiveWeapon::Type::NONE));
-
-		// Combattant avec liberté de valeur sur ses caractéristiques et avec une arme dont les caractéristiques sont définies par son type
-		Fighter(Type type, int life, int armor = 0, FighterOffensiveWeapon::Type weaponType = FighterOffensiveWeapon::Type::NONE);
+		// Combattant avec liberté de valeur sur ses caractéristiques
+		Fighter(Type type, int life, std::unique_ptr<FighterOffensiveWeapon> offensiveWeapon = std::make_unique<FighterOffensiveWeapon>(), std::unique_ptr<FighterDefensiveWeapon> defensiveWeapon = nullptr);
 		
 		virtual ~Fighter();
 
@@ -31,11 +30,8 @@ class Fighter
 		// Le combattant encaisse les dommages
 		void takeDamage(int damage);
 
-		// Affiche la description d'un Combattant
-		operator std::string() const;
-
-		// Retourne le type du combattant en chaîne de caractères
-		std::string getStringType() const;
+		// Affiche la description d'un combattant
+		virtual operator std::string() const;
 		
 		// Accesseurs sur les variables de la classe
 		Type getType() { return _type; };
@@ -44,7 +40,11 @@ class Fighter
 	protected:
 		Type _type;
 		int _life;
-		int _armor;
+		std::unique_ptr<FighterDefensiveWeapon> _defensiveWeapon;
 		std::unique_ptr<FighterOffensiveWeapon> _offensiveWeapon;
+
+	protected:
+		// Retourne le type du combattant en chaîne de caractères
+		virtual std::string getStringType() const { return "Soldat"; };
 };
 

@@ -10,4 +10,8 @@ class Knight :
     public:
         Knight();
         ~Knight();
+
+    protected:
+        // Retourne le type du combattant en chaîne de caractères
+        virtual std::string getStringType() const override { return "Chevalier"; };
 };
