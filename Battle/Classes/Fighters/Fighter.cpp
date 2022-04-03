@@ -1,22 +1,65 @@
 #include "Fighter.h"
 #include <iostream>
 
-Fighter::Fighter() : _type(Type::SOLDIER), _life(10) {}
+Fighter::Fighter() : Fighter(Type::SOLDIER, 10)  {}
 
-Fighter::Fighter(Type type, int life, std::unique_ptr<FighterOffensiveWeapon> offensiveWeapon, std::unique_ptr<FighterDefensiveWeapon> defensiveWeapon) : 
-	_type(type), _life(life), _offensiveWeapon(std::move(offensiveWeapon)), _defensiveWeapon(std::move(defensiveWeapon)) {}
+Fighter::Fighter(Type type, int life, std::unique_ptr<OffensiveWeapon> offensiveWeapon, std::unique_ptr<DefensiveWeapon> defensiveWeapon, std::unique_ptr<Skill> skill) :
+	_type(type), _life(life), _offensiveWeapon(std::move(offensiveWeapon)), _defensiveWeapon(std::move(defensiveWeapon)), _skill(std::move(skill)),
+	_effect(nullptr) {}
 
 Fighter::~Fighter(){}
 
+void Fighter::useSkill(std::shared_ptr<Fighter> me, std::shared_ptr<Fighter> enemy)
+{
+	// Si pas de capacité ou capacité pas prête à l'utilisation -> pas d'utilisation de la capacité
+	if (!_skill || (_skill && _skill->getRemainingCooldown() > 0)) return;
+
+	bool isSkillUsedWithSuccess;
+	if (_skill->getType() == Skill::Type::ACTIVE) { // Capacité sur l'ennemi
+		isSkillUsedWithSuccess = _skill->use(enemy);
+	} else { // Capacité sur soi-même
+		isSkillUsedWithSuccess = _skill->use(me);
+	}
+
+	std::cout << getStringType() << " utilise la capacité " << _skill->getName();
+	if (isSkillUsedWithSuccess) {
+		if (_skill->getType() == Skill::Type::ACTIVE) {
+			std::cout << " avec succès sur " << enemy->getStringType() << " et applique l'effet \"" 
+				<< _skill->getEffect()->getDescription() << "\""<< "\n\n";
+		} else {
+			std::cout << " avec succès sur lui-même et s'applique l'effet \"" << 
+				_skill->getEffect()->getDescription() << "\"" << "\n\n";
+		}
+	} else {
+		std::cout << " et échoue" << "\n\n";
+	}
+}
+
 void Fighter::attack(std::shared_ptr<Fighter> enemy)
 {
+	// Si pas d'arme -> le combattant ne peut pas attaquer
 	if (!_offensiveWeapon) return;
 
-	std::cout << getStringType() << " attaque " << enemy->getStringType()
-		<< " avec " << _offensiveWeapon->getStringName() <<
-		" et inflige " << _offensiveWeapon->getDamage() << " points de dégâts." << "\n\n";
+	// Le combattant est sous l'effet appliqué par la capacité "stun" -> il ne peut pas attaquer
+	if (_effect && _effect->getID() == Effect::ID::STUN) {
+		std::cout << getStringType() << " est étourdit et ne peut pas attaquer" << "\n\n";
+		return;
+	}
 
-	enemy->takeDamage(_offensiveWeapon->getDamage());
+	int damageToDeal = _offensiveWeapon->getDamage();
+
+	// Le combattant est sous l'effet appliqué par la capacité "charge" -> dégats doublés
+	if (_effect && _effect->getID() == Effect::ID::CHARGE) {
+		damageToDeal *= 2;
+		std::cout << getStringType() << " double ses dégâts pour ce tour" << "\n\n";
+	}
+	
+	std::cout << getStringType() << " attaque " << enemy->getStringType()
+		<< " avec " << _offensiveWeapon->getName() <<
+		" et inflige " << damageToDeal << " points de dégâts." << "\n\n";
+
+	// Dégâts infligés géré par l'ennemi
+	enemy->takeDamage(damageToDeal);
 }
 
 void Fighter::takeDamage(int damage)
@@ -41,6 +84,12 @@ void Fighter::takeDamage(int damage)
 	_life = std::max(0, _life - damageRemaining);
 }
 
+void Fighter::updateSkillAndEffectStatus()
+{
+	_updateSkillStatus();
+	_updateEffectStatus();
+}
+
 Fighter::operator std::string() const
 {
 	int armor = (!_defensiveWeapon) ? 0 : _defensiveWeapon->getArmor();
@@ -50,4 +99,36 @@ Fighter::operator std::string() const
 	std::string armorStatus = "Armure : " + std::to_string(armor);
 
 	return name + "\n" + lifeStatus + "\n" + armorStatus + "\n";
+}
+
+void Fighter::_updateSkillStatus()
+{
+	if (!_skill) return;
+
+	_skill->updateCooldown();
+
+	int skillRemainingCoolDown = _skill->getRemainingCooldown();
+	if (skillRemainingCoolDown == 0) {
+		std::cout << getStringType() << " peut utiliser sa capacité " << _skill->getName() <<"\n\n";
+	} else {
+		std::cout << getStringType() << " pourra utiliser sa capacité " << _skill->getName() << " dans " << skillRemainingCoolDown <<
+			((skillRemainingCoolDown > 1) ? " tours" : " tour") << "\n\n";
+	}
+	
+}
+
+void Fighter::_updateEffectStatus()
+{
+	if (!_effect) return;
+
+	int effectRemainingActiveDuration = _effect->updateActiveDuration();
+
+	// Si l'effet n'est plus actif -> suppression de l'effet sur le combattant
+	if (effectRemainingActiveDuration == 0) {
+		std::cout << getStringType() << " n'a plus l'effet \"" << _effect->getDescription() << "\"" << "\n\n";
+		_effect = nullptr;
+		return;
+	}
+
+	std::cout << getStringType() << " est sous l'effet \"" << _effect->getDescription() << "\"" << "\n\n";
 }

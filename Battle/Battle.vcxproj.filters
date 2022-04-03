@@ -21,7 +21,7 @@
     <ClCompile Include="Classes\Fighters\Fighter.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.cpp">
+    <ClCompile Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Fighters\Knight.cpp">
@@ -39,10 +39,22 @@
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Sword.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Weapons\DefensiveWeapons\FighterDefensiveWeapon.cpp">
+    <ClCompile Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Weapons\DefensiveWeapons\Shield.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Skills\Charge.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Skills\Skill.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Skills\Stun.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Effects\Effect.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +62,7 @@
     <ClInclude Include="Classes\Fighters\Fighter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.h">
+    <ClInclude Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Fighters\Knight.h">
@@ -68,10 +80,22 @@
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\Sword.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\Weapons\DefensiveWeapons\FighterDefensiveWeapon.h">
+    <ClInclude Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Weapons\DefensiveWeapons\Shield.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Skills\Charge.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Skills\Skill.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Skills\Stun.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Effects\Effect.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

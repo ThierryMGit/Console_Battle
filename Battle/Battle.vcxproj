@@ -140,25 +140,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Classes\Effects\Effect.cpp" />
     <ClCompile Include="Classes\Fighters\Fighter.cpp" />
     <ClCompile Include="Classes\Fighters\Knight.cpp" />
     <ClCompile Include="Classes\Fighters\Orc.cpp" />
     <ClCompile Include="Classes\Game.cpp" />
-    <ClCompile Include="Classes\Weapons\DefensiveWeapons\FighterDefensiveWeapon.cpp" />
+    <ClCompile Include="Classes\Skills\Charge.cpp" />
+    <ClCompile Include="Classes\Skills\Skill.cpp" />
+    <ClCompile Include="Classes\Skills\Stun.cpp" />
+    <ClCompile Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.cpp" />
     <ClCompile Include="Classes\Weapons\DefensiveWeapons\Shield.cpp" />
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Axe.cpp" />
-    <ClCompile Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.cpp" />
+    <ClCompile Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.cpp" />
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Sword.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\Effects\Effect.h" />
     <ClInclude Include="Classes\Fighters\Fighter.h" />
     <ClInclude Include="Classes\Fighters\Knight.h" />
     <ClInclude Include="Classes\Fighters\Orc.h" />
     <ClInclude Include="Classes\Game.h" />
-    <ClInclude Include="Classes\Weapons\DefensiveWeapons\FighterDefensiveWeapon.h" />
+    <ClInclude Include="Classes\Skills\Charge.h" />
+    <ClInclude Include="Classes\Skills\Skill.h" />
+    <ClInclude Include="Classes\Skills\Stun.h" />
+    <ClInclude Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.h" />
     <ClInclude Include="Classes\Weapons\DefensiveWeapons\Shield.h" />
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\Axe.h" />
-    <ClInclude Include="Classes\Weapons\OffensiveWeapons\FighterOffensiveWeapon.h" />
+    <ClInclude Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.h" />
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\Sword.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

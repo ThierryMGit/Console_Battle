@@ -2,10 +2,10 @@
 
 // Création d'un bouclier à partir d'une arme défensive avec des caractéristiques définies
 
-#include "FighterDefensiveWeapon.h"
+#include "DefensiveWeapon.h"
 
 class Shield :
-    public FighterDefensiveWeapon
+    public DefensiveWeapon
 {
     public:
         Shield();
