@@ -18,7 +18,7 @@ void Game::_chooseModeState()
 	std::cout << "###** BATAILLE ***### \n\n";
 
 	// Choix du mode de jeu
-	int inputGameMode;
+	char inputGameMode;
 	do {
 		std::cout << "Modes de jeu : \n";
 		std::cout << "1 - Joueur contre IA \n";
@@ -27,10 +27,17 @@ void Game::_chooseModeState()
 		std::cout << "Veuillez taper un chiffre pour choisir le mode de jeu : ";
 		std::cin >> inputGameMode;
 		std::cout << "\n\n";
-	} while (!std::cin.fail() && (inputGameMode < 1 || inputGameMode > 3));
+	} while (!std::cin.fail() && (inputGameMode != '1' && inputGameMode != '2' && inputGameMode != '3'));
 	
-
 	GameMode chosenGameMode = static_cast<GameMode>(inputGameMode);
+	std::cout << "Mode de jeu Choisi : ";
+	if (chosenGameMode == GameMode::AI_V_AI) {
+		std::cout << "IA contre IA" << "\n\n";
+	} else if (chosenGameMode == GameMode::P_VS_P) {
+		std::cout << "Joueur contre Joueur" << "\n\n";
+	} else {
+		std::cout << "Joueur contre IA" << "\n\n";
+	}
 	
 	// Si le mode de jeu est IA contre IA -> pas besoin d'attendre un choix de combattant
 	if (chosenGameMode == GameMode::AI_V_AI) {
@@ -59,7 +66,7 @@ void Game::_chooseModeState()
 void Game::_chooseFighterState(GameMode currentGameMode)
 {
 	// Choix d'un combattant pour le joueur 1
-	int inputChooseFighter;
+	char inputChooseFighter;
 	do {
 		std::cout << "Combattants : \n";
 		std::cout << "1 - Chevalier \n";
@@ -67,7 +74,7 @@ void Game::_chooseFighterState(GameMode currentGameMode)
 		std::cout << "Joueur 1" << " - Veuillez taper un chiffre pour choisir votre combattant : ";
 		std::cin >> inputChooseFighter;
 		std::cout << "\n\n";
-	} while (!std::cin.fail() && (inputChooseFighter < 1 || inputChooseFighter > 2));
+	} while (!std::cin.fail() && (inputChooseFighter != '1' && inputChooseFighter != '2'));
 
 	// En fonction du choix du joueur 1 -> il déterminera le combattant de l'autre joueur ou IA
 	if (static_cast<Fighter::Type>(inputChooseFighter) == Fighter::Type::KNIGHT) {
