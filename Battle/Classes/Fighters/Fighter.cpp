@@ -1,11 +1,17 @@
 #include "Fighter.h"
 #include <iostream>
 
+int Fighter::instanceCount = 1;
+
 Fighter::Fighter() : Fighter(Type::SOLDIER, 10)  {}
 
 Fighter::Fighter(Type type, int life, std::unique_ptr<OffensiveWeapon> offensiveWeapon, std::unique_ptr<DefensiveWeapon> defensiveWeapon, std::unique_ptr<Skill> skill) :
 	_type(type), _life(life), _offensiveWeapon(std::move(offensiveWeapon)), _defensiveWeapon(std::move(defensiveWeapon)), _skill(std::move(skill)),
-	_effect(nullptr) {}
+	_effect(nullptr) 
+{
+	_id = instanceCount;
+	instanceCount++;
+}
 
 Fighter::~Fighter(){}
 
@@ -13,6 +19,11 @@ void Fighter::useSkill(std::shared_ptr<Fighter> me, std::shared_ptr<Fighter> ene
 {
 	// Si pas de capacité ou capacité pas prête à l'utilisation -> pas d'utilisation de la capacité
 	if (!_skill || (_skill && _skill->getRemainingCooldown() > 0)) return;
+
+	// Le combattant est sous l'effet appliqué par la capacité "stun" -> il ne peut pas utiliser de capacité
+	if (_effect && _effect->getID() == Effect::ID::STUN) {
+		return;
+	}
 
 	bool isSkillUsedWithSuccess;
 	if (_skill->getType() == Skill::Type::ACTIVE) { // Capacité sur l'ennemi
@@ -90,7 +101,7 @@ void Fighter::updateSkillAndEffectStatus()
 	_updateEffectStatus();
 }
 
-Fighter::operator std::string() const
+std::string Fighter::getStatus() const
 {
 	int armor = (!_defensiveWeapon) ? 0 : _defensiveWeapon->getArmor();
 
@@ -101,20 +112,31 @@ Fighter::operator std::string() const
 	return name + "\n" + lifeStatus + "\n" + armorStatus + "\n";
 }
 
+bool Fighter::isSkillUsable()
+{
+	// Pas de capacité
+	if (!_skill) {
+		std::cout << getStringType() << " ne possède pas de capacité" << "\n\n";
+		return false;
+	} else if (_skill && _skill->getRemainingCooldown() > 0) { // capacité pas prête à l'utilisation
+		std::cout << "Capacité non disponible : " << getStringType() << " pourra utiliser sa capacité " << _skill->getName() << " dans " << _skill->getRemainingCooldown() <<
+			((_skill->getRemainingCooldown() > 1) ? " tours" : " tour") << "\n\n";
+		return false;
+	} else if (_effect && _effect->getID() == Effect::ID::STUN) { // Le combattant est sous l'effet appliqué par la capacité "stun" -> il ne peut pas utiliser de capacité
+		std::cout << getStringType() << " est étourdit et ne peut utiliser sa capacité" << "\n\n";
+		return false;
+	} else {
+		std::cout << getStringType() << " peut utiliser sa capacité " << _skill->getName() <<
+			" : " << _skill->getDescription() << "\n\n";
+		return true;
+	}
+}
+
 void Fighter::_updateSkillStatus()
 {
 	if (!_skill) return;
 
 	_skill->updateCooldown();
-
-	int skillRemainingCoolDown = _skill->getRemainingCooldown();
-	if (skillRemainingCoolDown == 0) {
-		std::cout << getStringType() << " peut utiliser sa capacité " << _skill->getName() <<"\n\n";
-	} else {
-		std::cout << getStringType() << " pourra utiliser sa capacité " << _skill->getName() << " dans " << skillRemainingCoolDown <<
-			((skillRemainingCoolDown > 1) ? " tours" : " tour") << "\n\n";
-	}
-	
 }
 
 void Fighter::_updateEffectStatus()

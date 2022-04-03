@@ -11,8 +11,10 @@
 class Fighter
 {
 	public:
+		static int instanceCount; // Permet d'attribuer un id de combattant
+
 		enum class Type {
-			KNIGHT,
+			KNIGHT = 1,
 			ORC,
 			SOLDIER
 		};
@@ -41,13 +43,18 @@ class Fighter
 		void updateSkillAndEffectStatus();
 
 		// Affiche la description d'un combattant
-		virtual operator std::string() const;
+		std::string getStatus() const;
+
+		// Evalue et Retourne true si la capacité est utilisable
+		bool isSkillUsable();
 		
 		// Accesseurs sur les variables de la classe
+		int getId() { return _id; };
 		Type getType() { return _type; };
 		int getLife() { return _life; };
 
 	protected:
+		int _id; // Identifiant unique de combattant
 		Type _type; 
 		int _life; // Points de vie
 		std::unique_ptr<DefensiveWeapon> _defensiveWeapon; // Arme défensive ("Bouclier")
