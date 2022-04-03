@@ -140,6 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Classes\Controllers\Controller.cpp" />
+    <ClCompile Include="Classes\Controllers\AIController.cpp" />
+    <ClCompile Include="Classes\Controllers\PlayerController.cpp" />
     <ClCompile Include="Classes\Effects\Effect.cpp" />
     <ClCompile Include="Classes\Fighters\Fighter.cpp" />
     <ClCompile Include="Classes\Fighters\Knight.cpp" />
@@ -155,6 +158,9 @@
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Sword.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\Controllers\Controller.h" />
+    <ClInclude Include="Classes\Controllers\AIController.h" />
+    <ClInclude Include="Classes\Controllers\PlayerController.h" />
     <ClInclude Include="Classes\Effects\Effect.h" />
     <ClInclude Include="Classes\Fighters\Fighter.h" />
     <ClInclude Include="Classes\Fighters\Knight.h" />

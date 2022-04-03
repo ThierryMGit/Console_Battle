@@ -13,90 +13,150 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Fighters">
+      <UniqueIdentifier>{f5aa7b94-4592-40d1-b9d4-6091a8e13d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Fighters">
+      <UniqueIdentifier>{f0ac8477-08be-4041-a3a8-818d9147fffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Weapons">
+      <UniqueIdentifier>{add617c0-26c8-47a6-9c58-35159977a7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Weapons\OffensiveWeapons">
+      <UniqueIdentifier>{c8cc5adc-70ec-4f47-974f-077798e7e829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Weapons\DefensiveWeapons">
+      <UniqueIdentifier>{4962592a-746d-4dfe-b995-4e4020ea4718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Weapons">
+      <UniqueIdentifier>{1806460a-dab9-4f8a-a423-a557f407d072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Weapons\DefensiveWeapons">
+      <UniqueIdentifier>{3a49e03a-9a7c-4203-b798-022c6b813d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Weapons\OffensiveWeapons">
+      <UniqueIdentifier>{f01f9d4c-c532-4525-afd5-3e05949c5c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Skills">
+      <UniqueIdentifier>{7b6538a8-e17f-43d9-986a-46e97e7c974e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Skills">
+      <UniqueIdentifier>{f481dedc-b808-4aab-8b91-32fa94068c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Effects">
+      <UniqueIdentifier>{5e8dec75-b59d-4676-8ea4-42f493777e94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Controllers">
+      <UniqueIdentifier>{e2f84187-e898-447f-afc9-379fad3b4167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Effects">
+      <UniqueIdentifier>{e2574c4b-8759-4789-8155-e109a8486942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Controllers">
+      <UniqueIdentifier>{7d193492-3570-4faa-aca9-4cfdd9cacd59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Fighters\Fighter.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Fighters\Knight.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Fighters\Orc.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\Game.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Classes\Fighters\Fighter.cpp">
+      <Filter>Fichiers sources\Fighters</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Fighters\Orc.cpp">
+      <Filter>Fichiers sources\Fighters</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Fighters\Knight.cpp">
+      <Filter>Fichiers sources\Fighters</Filter>
+    </ClCompile>
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Axe.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Weapons\OffensiveWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.cpp">
+      <Filter>Fichiers sources\Weapons\OffensiveWeapons</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Weapons\OffensiveWeapons\Sword.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Weapons\OffensiveWeapons</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Weapons\DefensiveWeapons\Shield.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Weapons\DefensiveWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.cpp">
+      <Filter>Fichiers sources\Weapons\DefensiveWeapons</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Skills\Charge.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Skills</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Skills\Skill.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Skills</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Skills\Stun.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Skills</Filter>
     </ClCompile>
     <ClCompile Include="Classes\Effects\Effect.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Controllers\Controller.cpp">
+      <Filter>Fichiers sources\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Controllers\AIController.cpp">
+      <Filter>Fichiers sources\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Controllers\PlayerController.cpp">
+      <Filter>Fichiers sources\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes\Fighters\Fighter.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Fighters\Knight.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Fighters\Orc.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Classes\Game.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Classes\Fighters\Fighter.h">
+      <Filter>Fichiers d%27en-tête\Fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Fighters\Orc.h">
+      <Filter>Fichiers d%27en-tête\Fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Fighters\Knight.h">
+      <Filter>Fichiers d%27en-tête\Fighters</Filter>
+    </ClInclude>
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\Axe.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Weapons\OffensiveWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Weapons\OffensiveWeapons\OffensiveWeapon.h">
+      <Filter>Fichiers d%27en-tête\Weapons\OffensiveWeapons</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Weapons\OffensiveWeapons\Sword.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Weapons\OffensiveWeapons</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Weapons\DefensiveWeapons\DefensiveWeapon.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Weapons\DefensiveWeapons</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Weapons\DefensiveWeapons\Shield.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Skills\Charge.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Weapons\DefensiveWeapons</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Skills\Skill.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Skills</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Skills\Stun.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Skills\Charge.h">
+      <Filter>Fichiers d%27en-tête\Skills</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Effects\Effect.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Controllers\Controller.h">
+      <Filter>Fichiers d%27en-tête\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Controllers\AIController.h">
+      <Filter>Fichiers d%27en-tête\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Controllers\PlayerController.h">
+      <Filter>Fichiers d%27en-tête\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
