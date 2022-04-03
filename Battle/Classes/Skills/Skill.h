@@ -31,6 +31,7 @@ class Skill
 		std::string getName() const { return _name; };
 		int getRemainingCooldown() { return _remainingCooldown; };
 		std::shared_ptr<Effect> getEffect() { return _effect; };
+		std::string getDescription() { return "Applique l'effet \"" + _effect->getDescription() + "\""; };
 
 	protected:
 		Type _type;
